@@ -122,11 +122,22 @@ function git-svn(){
 
 # vim with auto sudo
 function vim () {
+    # if [ ! "$@" ]; then
+    #     #printf "No arguments passed in, need \$@ - file is required\n"
+    #     #printf "\$@ Argument required.\n"
+    #     printf "File name argument required.\n"
+    #     return 1
+    # fi
     if [ ! "$@" ]; then
-        #printf "No arguments passed in, need \$@ - file is required\n"
-        #printf "\$@ Argument required.\n"
-        printf "File name argument required.\n"
-        return 1
+        if [ ! -w "$(pwd)" ]; then
+            printf "Opening vim with sudo...\n"
+            sudo $HOME/.local/bin/lvim
+            return
+        else
+            printf "Opening vim...\n"
+            $HOME/.local/bin/lvim
+            return
+        fi
     fi
 	if [ ! -e "$@" ]
 	then
@@ -141,7 +152,7 @@ function vim () {
             if [ ! -w "$(dirname $@)" ]
             then
                 printf "Opening vim with sudo...\n"
-                sudo /usr/bin/nvim "$@"
+                sudo $HOME/.local/bin/lvim "$@"
                 if [ ! -e "$@" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
@@ -152,7 +163,7 @@ function vim () {
             #elif [[ -e "$@" ]]
             else
                 printf "Opening vim...\n"
-                /usr/bin/nvim "$@"
+                $HOME/.local/bin/lvim "$@"
                 if [ ! -e "$@" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
@@ -172,11 +183,11 @@ function vim () {
     if [ ! -w "$@" ]
 	then
         printf "Opening vim with sudo...\n"
-		sudo /usr/bin/nvim "$@"
+		sudo $HOME/.local/bin/lvim "$@"
         return
 	elif [[ -e "$@" ]]; then
         printf "Opening vim...\n"
-		/usr/bin/nvim "$@"
+		$HOME/.local/bin/lvim "$@"
         return
 	fi
 #    if [ -e "$@" ]
@@ -270,27 +281,40 @@ function move_to_desktop {
     $(bspc window $W --to-desktop $1)
 }
 
-function unzip ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   mkdir ${1%.tar.bz2} && tar xvjf $1 -C ${1%.tar.bz2}   ;;
-      *.tar.gz)    mkdir ${1%.tar.gz} && tar xvzf $1 -C ${1%.tar.gz}   ;;
-      *.tar.xz)    mkdir ${1%.tar.xz} && xz -d -v $1 ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       mkdir ${1%.*} && tar xvf $1    ;;
-      *.tbz2)      mkdir ${1%.*} && tar xzjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       /usr/bin/unzip $1 -d ${1%.*}    ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via unzip()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+# function unzip ()
+# {
+#   if [ -f $1 ] ; then
+#     case $1 in
+#       *.tar.bz2)   mkdir ${1%.tar.bz2} && tar xvjf $1 -C ${1%.tar.bz2}   ;;
+#       *.tar.gz)    mkdir ${1%.tar.gz} && tar xvzf $1 -C ${1%.tar.gz}   ;;
+#       *.tar.xz)    mkdir ${1%.tar.xz} && xz -d -v $1 ;;
+#       *.bz2)       bunzip2 $1   ;;
+#       *.rar)       unrar x $1     ;;
+#       *.gz)        gunzip $1    ;;
+#       *.tar)       mkdir ${1%.*} && tar xvf $1    ;;
+#       *.tbz2)      mkdir ${1%.*} && tar xzjf $1   ;;
+#       *.tgz)       tar xzf $1   ;;
+#       *.zip)       /usr/bin/unzip $1 -d ${1%.*}    ;;
+#       *.Z)         uncompress $1;;
+#       *.7z)        7z vx $1      ;;
+#       *.deb)       ar vx $1 --output ${1%.*}    ;;
+#       *)           echo "'$1' cannot be extracted via unzip()" ;;
+#     esac
+#   else
+#     echo "'$1' is not a valid file"
+#   fi
+# }
+
+function unzip () {
+    ouch d --dir ${1%.*} $@
+}
+
+function zip() {
+    ouch $@
+}
+
+function compress () {
+    ouch c $@
 }
 
 function nix-upgrade ()
@@ -354,7 +378,7 @@ function path ()
 function vimake ()
 {
   if [ -e "Makefile" ]; then  
-    nvim Makefile
+    lvim Makefile
   else
     printf "No Makefile"
   fi
@@ -378,11 +402,11 @@ function installpipreqs ()
     fi
 }
 
-function compress ()
-{
-  # TODO: MAKE MULTI COMPRESS OPTIONS
-  zip ${1%.*} -r $1
-}
+# function compress ()
+# {
+#   # TODO: MAKE MULTI COMPRESS OPTIONS
+#   zip ${1%.*} -r $1
+# }
 
 # vim:ft=sh
 

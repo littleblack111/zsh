@@ -8,10 +8,15 @@ alias q="exit"
 alias cleanram="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"
 alias trim_all="sudo fstrim -va"
 alias mkgrub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+# alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias update-grub='sudo update-grub'
 alias mtar='tar -zcvf' # mtar <archive_compress>
 alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
 alias z='zip -r' # z <archive_compress> <file_list>
 alias uz='unzip' # uz <archive_decompress> -d <dir>
+# alias unzip='ouch d'
+# alias compress='ouch c'
+# alias zip='ouch c'
 alias sr='source ~/.config/zsh/env.zsh'
 alias ..="cd .."
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
@@ -34,7 +39,7 @@ alias installed="grep -i installed /var/log/pacman.log"
 alias grep='grep --color=auto'
 alias mv='mv -v'
 alias cp='cp -vr'
-alias rm='rm -vr'
+alias rm='trash -v'
 alias commit="git add . && git commit -m"
 alias push="git push"
 alias git-rm="git ls-files --deleted -z | xargs -0 git rm"
@@ -218,9 +223,11 @@ alias gcl='git clone --depth 1 --recurse-submodules'
 alias gi='git init'
 alias gl='git log'
 #alias ga='git add'
-alias gc='git commit -am'
-alias gp='git push origin main'
-alias gitp='git pull origin main'
+# alias gc='git commit -am'
+alias gc='git commit --verbose -S -am'
+# alias gp='git push origin main'
+alias gp='git remote | xargs -L1 git push --all'
+alias gitp='git remote | xargs -L1 git pull'
 alias gs='git status'
 alias gitrm='git rm --cached -rf'
 alias g='git'
@@ -240,7 +247,7 @@ alias chatgpt='chat'
 # chatgpt
 #alias chatgpt='chatgpt-cli'
 
-#alias ls="exa --color=auto --icons" # lsd same
+# alias ls="exa --color=auto --icons" # lsd same
 #alias l="ls -l"
 #alias la="ls -a"
 #alias lla="ls -la"
@@ -251,9 +258,9 @@ alias chatgpt='chat'
 
 # better ls
 if [ $DISPLAY ]; then
-    alias ls='lsd'
+   alias ls='lsd'
 else
-    alias ls="exa --color=auto"
+   alias ls="exa --color=auto"
 fi
 alias l='ls -l'
 alias ll='ls -l'
@@ -321,6 +328,7 @@ alias stablediffusion='aimage'
 # better python
 alias python='bpython'
 alias python3='bpython'
+alias pip='python -m pip'
 alias pipreqr='pip3 install -r requirements.txt'
 alias pipreqsi='installpipreqs'
 # better discord
@@ -335,8 +343,8 @@ alias config-bspwm='vim ~/.config/bspwm/bspwmrc'
 alias config-keybind='vim ~/.config/bspwm/sxhkdrc'
 alias config-polybar='vim ~/.config/bspwm/themes/default/polybar/config.ini'
 # better less/cat
-alias less='bat' # moved into utility for auto sudo # nah, the one wont work with pipe
-alias cat='bat --pager=never' # moved into utility for auto sudo # nah, wont work with pipe
+# alias less='bat' # moved into utility for auto sudo # nah, the one wont work with pipe
+# alias cat='bat --pager=never' # moved into utility for auto sudo # nah, wont work with pipe
 # better diff
 #alias diff='bat -d'
 # tars
@@ -356,7 +364,7 @@ alias map='mapscii'
 alias diskana='ncdu'
 # must run as root commands
 # alias pacman='sudo pacman'
-alias sudo='sudo '
+alias sudo='nocorrect sudo'
 alias root='sudo su'
 alias \*='sudo'
 alias visudo='sudo visudo'
@@ -401,6 +409,17 @@ alias umount='sudo umount'
 alias usermod='sudo usermod'
 alias useradd='sudo useradd'
 alias userdel='sudo userdel'
+# change perms
+alias getown='sudo chown -R $USER'
+alias getread='sudo chmod +r'
+alias geturead='sudo chmod u+r'
+alias getgread='sudo chmod g+r'
+alias getexec='sudo chmod +x'
+alias getuexec='sudo chmod u+x'
+alias getgexec='sudo chmod g+x'
+alias getwrite='sudo chmod +w'
+alias getuwrite='sudo chmod u+w'
+alias getgwrite='sudo chmod g+w'
 alias pipes='pipes.sh'
 # better cd
 alias bcd='fzf'
@@ -423,7 +442,8 @@ alias update='npm update & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay
 alias upgrade='update'
 # more pacman alis
 alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
-alias packagelist='paru --color always -Sl | sed -e "s: :/:; /unknown-version/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
+alias packagelist='paru --color always -Sl | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
+# alias packagelist='paru --color always -Sl | sed -e "s: :/:; /unknown-version/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
 alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --preview 'yay -Si {1}' | xargs -ro paru -S --skipreview --needed"
 alias package='packagelist'
 alias pi='pacman --noconfirm -S --needed'
@@ -463,7 +483,8 @@ alias mysql='mysql'
 #alias p='nocorrect p'
 #alias pacman='nocorrect pacman'
 
-alias sys='nu -c sys'
+# alias sys='nu -c sys'
+alias sys='systemctl'
 alias process='nu -c ps'
 
 # compiles
@@ -482,7 +503,8 @@ alias sentext='ix'
 alias joinchat='nc 127.0.0.1 8000'
 # license
 alias license='/usr/bin/cat /mnt/DATA/Code/license.txt'
-alias license.short="sed -n '2p' /mnt/DATA/Code/license.txt"
+# alias license.short="sed -n '2p' /mnt/DATA/Code/license.txt"
+alias license.short='sed -n '634,648p' /mnt/DATA/Code/license.txt'
 # browsh
 alias browsh='echo "export $(env | grep --color=never LANG=)" > $HOME/.cache/browsh.LANGcache && LANG=EN && browsh && $(cat $HOME/.cache/browsh.LANGcache) && rm $HOME/.cache/browsh.LANGcache'
 # metasploit framework
@@ -496,3 +518,7 @@ alias pf='processfind'
 # help
 alias help='tldr'
 
+# server stuff
+getfs() { scp -P 2002 ssh.littleblack111.com:$@ .; }
+putfile() { scp -P 2002 $@ ssh.littleblack111.com:~ }
+putfs() { scp -P 2002 $@ ssh.littleblack111.com:~/server/public-fs }

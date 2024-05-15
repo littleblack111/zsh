@@ -107,15 +107,16 @@ add-zsh-hook -Uz precmd rehash_precmd
 #z4h init || return
 
 # thefuck
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 # autojump
-source $HOME/.autojump/etc/profile.d/autojump.sh
+#source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # homebrew
-#[ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval "$(/usr/local/linuxbrew/bin/brew shellenv)"
+# [ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# eval "$(/usr/local/linuxbrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -157,5 +158,8 @@ rehash_precmd() {
 #source $ZSH/custom/plugins/copybuffer/copybuffer.plugin.zsh
 #source $ZSH/custom/plugins/dirhistory/dirhistory.plugin.zsh
 
+#source /usr/share/nvm/init-nvm.sh
+
 # nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+eval "$(zoxide init zsh --cmd cd)"
