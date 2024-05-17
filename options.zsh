@@ -27,10 +27,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
+# zinit plugins
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
 # History
-#HISTFILE="$XDG_CACHE_HOME/zsh/.zhistory"
-#HISTSIZE=10000
-#SAVEHIST=10000
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.zsh_history
+HISTDUP=erase
 
 # Autosuggestion
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
@@ -63,6 +67,8 @@ HIST_IGNORE_SPACE
 HIST_NO_FUNCTIONS
 HIST_EXPIRE_DUPS_FIRST
 HIST_SAVE_NO_DUPS
+HIST_FIND_NO_DUPS
+HIST_IGNORE_DUPS
 HIST_REDUCE_BLANKS
 EOF
 
