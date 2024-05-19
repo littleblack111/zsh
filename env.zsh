@@ -33,11 +33,11 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
 ## Comment this to use normal manpager
-export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+export MANPAGER='lvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
 
 if [ $(echo $MANPAGER | awk '{print $1}') = nvim ]; then
   export LESS="--RAW-CONTROL-CHARS"
-  export MANPAGER="less -s -M +Gg"
+  # export MANPAGER="less -s -M +Gg"
 
   export LESS_TERMCAP_mb=$'\e[1;32m'
   export LESS_TERMCAP_md=$'\e[1;32m'
