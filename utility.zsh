@@ -335,7 +335,7 @@ function nix-search ()
 function ga ()
 {
   if [[ -n "${1+x}" ]]; then
-    git add $1 -f
+    git add $@ -f
   else
     git add -A -f
   fi

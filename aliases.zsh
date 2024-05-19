@@ -439,7 +439,7 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias update='npm update & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay -Syuu --noconfirm --disable-download-timeout' # pipx upgrade-all
+alias update='npm update -g & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
 alias upgrade='update'
 # more pacman alis
 alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
@@ -448,6 +448,7 @@ alias packagelist='paru --color always -Sl | fzf --multi --ansi --preview "yay -
 alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --preview 'yay -Si {1}' | xargs -ro paru -S --skipreview --needed"
 alias package='packagelist'
 alias pi='pacman --noconfirm -S --needed'
+alias pif='yes | pacman -S --needed'
 #alias ps='pacman --noconfirm -S --needed'
 alias pr='pacman --noconfirm -Rns'
 alias pri='pacman --noconfirm -S'
