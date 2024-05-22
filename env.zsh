@@ -12,7 +12,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export GPG_TTY="${TTY:-$(tty)}"
 export SUDO_PROMPT="passwd: "
 export TERMINAL="alacritty"
-export BROWSER="brave"
+export BROWSER="thorium-browser"
 export VISUAL="lvim"
 export EDITOR="$VISUAL"
 
