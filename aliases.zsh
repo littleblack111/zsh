@@ -412,6 +412,7 @@ alias usermod='sudo usermod'
 alias useradd='sudo useradd'
 alias userdel='sudo userdel'
 # change perms
+alias chown='chown -v'
 alias getown='sudo chown -R $USER'
 alias getread='sudo chmod +r'
 alias geturead='sudo chmod u+r'
