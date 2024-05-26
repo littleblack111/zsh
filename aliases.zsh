@@ -441,7 +441,7 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias update='npm update -g & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
+alias update='sudo test; npm update -g & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
 alias upgrade='update'
 # more pacman alis
 alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
@@ -521,6 +521,8 @@ alias pf='processfind'
 
 # help
 alias help='tldr'
+
+alias mt='memento-timeline'
 
 # server stuff
 getfs() { scp -P 2002 ssh.littleblack111.com:$@ .; }
