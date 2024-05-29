@@ -2,9 +2,6 @@
 ## Aliases
 ##
 
-alias run='pnpm run'
-alias c="clear"
-alias q="exit"
 alias cleanram="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"
 alias trim_all="sudo fstrim -va"
 alias mkgrub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -70,12 +67,12 @@ alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
 alias gbss='git bisect start'
 #alias gc='git commit -v'
-alias 'gc!'='git commit -v --amend'
-alias gca='git commit -v -a'
-alias 'gca!'='git commit -v -a --amend'
-alias gcam='git commit -a -m'
-alias 'gcan!'='git commit -v -a --no-edit --amend'
-alias 'gcans!'='git commit -v -a -s --no-edit --amend'
+# alias 'gc!'='git commit -v --amend'
+# alias gca='git commit -v -a'
+# alias 'gca!'='git commit -v -a --amend'
+# alias gcam='git commit -a -m'
+# alias 'gcan!'='git commit -v -a --no-edit --amend'
+# alias 'gcans!'='git commit -v -a -s --no-edit --amend'
 alias gcas='git commit -a -s'
 alias gcasm='git commit -a -s -m'
 alias gcb='git checkout -b'
@@ -224,8 +221,8 @@ alias gi='git init'
 alias gl='git log'
 #alias ga='git add'
 # alias gc='git commit -am'
-alias gc='git commit --verbose -S -am'
-alias gco='git commit --verbose -S -m'
+alias gc='git commit --verbose -S -m'
+alias gca='git commit --verbose -S -am'
 # alias gp='git push origin main'
 alias gp='git remote | xargs -L1 git push --all'
 alias gitp='git remote | xargs -L1 git pull'
@@ -441,7 +438,7 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias update='sudo test; npm update -g & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
+alias update='sudo npm update -g & nix-env -u & brew update & yay -Sl > /tmp/yaySl & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
 alias upgrade='update'
 # more pacman alis
 alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
