@@ -357,6 +357,8 @@ alias v='vim'
 #alias findhere='sudo find | grep '
 # ip
 alias pubip='curl ifconfig.co'
+# port
+alias getport='lsof -i'
 # map
 alias map='mapscii'
 # disk analyser
