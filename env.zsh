@@ -15,6 +15,7 @@ export TERMINAL="alacritty"
 export BROWSER="thorium-browser"
 export VISUAL="lvim"
 export EDITOR="$VISUAL"
+export PATH=$PATH:/home/system/.spicetify
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
