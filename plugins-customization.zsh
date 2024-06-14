@@ -165,3 +165,4 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 eval "$(zoxide init zsh --cmd cd)"
 
 eval "$(gh copilot alias zsh)"
+eval "$(coolify completion zsh)"
