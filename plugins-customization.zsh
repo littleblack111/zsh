@@ -166,4 +166,4 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # eval "$(gh copilot alias zsh)"
 eval "$(coolify completion zsh)"
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
