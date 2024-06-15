@@ -116,7 +116,7 @@ autoload -U compinit && compinit -u
 # homebrew
 # [ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # eval "$(/usr/local/linuxbrew/bin/brew shellenv)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/linuxbrew/bin/brew shellenv)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -164,5 +164,6 @@ rehash_precmd() {
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh &!; fi # added by Nix installer
 eval "$(zoxide init zsh --cmd cd)"
 
-eval "$(gh copilot alias zsh)"
+# eval "$(gh copilot alias zsh)"
 eval "$(coolify completion zsh)"
+eval "$(atuin init zsh)"
