@@ -431,3 +431,8 @@ function killZombie() {
         sudo kill -9 $pid;
     fi
 }
+
+function createrepo() {
+    gh repo create $1 --add-readme --license gpl-3.0 ${@:2}
+    tea repo create --name $1 --init --readme Default --license gpl3 --branch main ${@:2}
+}
