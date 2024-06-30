@@ -454,6 +454,7 @@ alias pc='pacman -Scc'
 alias clean='pacman -Scc'
 alias pf='pacman --noconfirm '
 alias p='pacman'
+alias autoremove='pacman -Rcns $(pacman -Qdtq)'
 alias pd='downgrade'
 # alias for nix(package manager)
 #alias nix-install='nix-env -iA nixpkgs.'
