@@ -309,14 +309,6 @@ function unzip () {
     ouch d --dir ${1%.*} $@
 }
 
-function zip() {
-    ouch $@
-}
-
-function compress () {
-    ouch c $@
-}
-
 function nix-upgrade ()
 {
   nix-env -u
