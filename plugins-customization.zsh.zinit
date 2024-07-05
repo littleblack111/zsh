@@ -1,0 +1,71 @@
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust \
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-completions \
+    zsh-users/zsh-history-substring-search \
+    zdharma-continuum/fast-syntax-highlighting \
+
+zinit snippet https://github.com/triplepointfive/oh-my-zsh/blob/master/plugins/sudo/sudo.plugin.zsh
+zinit snippet OMZP::web-search
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::copybuffer
+zinit snippet OMZP::dirhistory
+
+ENABLE_CORRECTION="true"
+
+COMPLETION_WAITING_DOTS="true"
+
+zshcache_time="$(date +%s%N)"
+
+add-zsh-hook -Uz precmd rehash_precmd
+
+autoload -Uz compinit && compinit -u
+
+autoload -Uz add-zsh-hook
+
+rehash_precmd() {
+  if [[ -a /var/cache/zsh/pacman ]]; then
+    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
+    if (( zshcache_time < paccache_time )); then
+      rehash
+      zshcache_time="$paccache_time"
+    fi
+  fi
+}
+
+# thefuck
+eval $(thefuck --alias)
+
+# autojump
+#source $HOME/.autojump/etc/profile.d/autojump.sh
+
+# homebrew
+# [ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# eval "$(/usr/local/linuxbrew/bin/brew shellenv)"
+eval "$(/opt/linuxbrew/bin/brew shellenv)"
+
+# nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh &!; fi # added by Nix installer
+eval "$(zoxide init zsh --cmd cd)"
+
+# eval "$(gh copilot alias zsh)"
+eval "$(coolify completion zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
