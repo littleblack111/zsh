@@ -32,6 +32,7 @@ plugins=(
     #zsh-autocomplete
     zsh-history-substring-search
     zsh-syntax-highlighting
+    # fast-syntax-highlighting
     sudo
     web-search
     copybuffer
