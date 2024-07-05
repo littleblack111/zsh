@@ -526,6 +526,9 @@ alias help='tldr'
 
 alias mt='memento-timeline'
 
+# xdg-ninja suggested
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+
 # server stuff
 getfs() { scp -P 2002 ssh.littleblack111.com:$@ .; }
 putfile() { scp -P 2002 $@ ssh.littleblack111.com:~ }

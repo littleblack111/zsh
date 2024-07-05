@@ -112,6 +112,9 @@ eval $(thefuck --alias)
 
 # autojump
 #source $HOME/.autojump/etc/profile.d/autojump.sh
+#
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
 autoload -U compinit && compinit -u
 
 # homebrew
