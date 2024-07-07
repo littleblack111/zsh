@@ -444,7 +444,7 @@ alias update='sudo npm update -g & nix-env -u & brew update & yay -Sl > /tmp/yay
 alias upgrade='update'
 # more pacman alis
 alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
-alias packagelist='paru --color always -Sl | fzf --multi --ansi --preview "yay -Si {2}" | awk "{print $2}" | xargs -ro yay -S'
+alias packagelist="paru --color always -Sl | fzf --multi --ansi --preview 'yay -Si {2}' | awk '{print \$2}' | xargs -ro yay -S"
 # alias packagelist='paru --color always -Sl | sed -e "s: :/:; /unknown-version/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
 alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --preview 'yay -Si {1}' | xargs -ro paru -S --skipreview --needed"
 alias package='packagelist'
