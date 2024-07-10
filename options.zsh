@@ -33,7 +33,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # History
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
-HISTFILE="$XDG_STATE_HOME"/zsh/history
+HISTFILE=~/.zsh_history
 HISTDUP=erase
 
 # Autosuggestion
