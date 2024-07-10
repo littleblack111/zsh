@@ -108,7 +108,7 @@ add-zsh-hook -Uz precmd rehash_precmd
 #z4h init || return
 
 # thefuck
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 # autojump
 #source $HOME/.autojump/etc/profile.d/autojump.sh
