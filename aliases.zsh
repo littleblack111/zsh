@@ -258,8 +258,8 @@ alias chatgpt='chat'
 
 # better ls
 if [ $DISPLAY ]; then
-   # alias ls='lsd'
-   alias ls="exa --color=auto --icons"
+   alias ls='lsd'
+   # alias ls="exa --color=auto --icons"
 else
    alias ls="exa --color=auto"
 fi
@@ -413,7 +413,7 @@ alias useradd='sudo useradd'
 alias userdel='sudo userdel'
 # change perms
 alias chown='chown -v'
-alias getown='sudo chown -R $USER'
+alias getown='sudo chown -R $USER:$USER'
 alias getread='sudo chmod +r'
 alias geturead='sudo chmod u+r'
 alias getgread='sudo chmod g+r'
@@ -441,11 +441,12 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias update='sudo npm update -g & nix-env -u & brew upgrade & flatpak update -y & tldr -u & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
+# alias update='sudo npm update -g & nix-env -u & brew upgrade & flatpak update -y & tldr -u & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
+alias update='topgrade -y --no-retry'
 alias upgrade='update'
 # more pacman alis
 alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
-alias packagelist="paru --color always -Sl | fzf --multi --ansi --preview 'yay -Si {2}' | awk '{print \$2}' | xargs -ro yay -S"
+alias packagelist="paru --color always -Sl | fzf --multi --ansi --preview 'yay -Si {2}' | awk '{print \$2}' | xargs -ro yay -S --noconfirm"
 # alias packagelist='paru --color always -Sl | sed -e "s: :/:; /unknown-version/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
 alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --preview 'yay -Si {1}' | xargs -ro paru -S --skipreview --needed"
 alias package='packagelist'
