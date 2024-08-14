@@ -367,7 +367,7 @@ alias map='mapscii'
 alias diskana='ncdu'
 # must run as root commands
 # alias pacman='sudo pacman'
-alias sudo='nocorrect sudo '
+alias sudo='sudo '
 alias root='sudo su'
 alias \*='sudo'
 alias visudo='sudo visudo'
