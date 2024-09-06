@@ -306,8 +306,8 @@ alias web2app='nativefier --name '
 #alias vim='/home/system/scripts/vim'
 #alias vim='lvim'
 # copy/paste from terminal
-alias copy='xclip -selection clipboard'
-alias paste='xclip -selection clipboard -o'
+alias copy='wl-copy'
+alias paste='wl-paste'
 # port forwarding & webserver
 alias cloudflarepf='cloudflared tunnel --url localhost:'
 alias portforward='cloudflared tunnel --url localhost:'
@@ -387,6 +387,7 @@ alias bpytop='sudo bpytop'
 alias debtap='sudo debtap'
 alias rpm='sudo rpm'
 alias journalctl='sudo journalctl'
+alias powertop='sudo powertop'
 alias upgrade-grub='grub-mkconfig -o /boot/grub/grub.cfg'
 #alias update-grub='sudo update-grub'
 alias grub-mkconfig='sudo grub-mkconfig'
@@ -475,6 +476,7 @@ alias df='df -h'
 alias du='du -h'
 #alias free='free -h'
 alias grep='grep --color=always'
+alias frep='grep -ir'
 
 # vim:ft=zsh
 # doesn't work in zshenv
