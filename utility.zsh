@@ -131,7 +131,7 @@ function vim () {
     if [ ! "$@" ]; then
         if [ ! -w "$(pwd)" ]; then
             printf "Opening vim with sudo...\n"
-            sudo $HOME/.local/bin/lvim
+            sudo -E $HOME/.local/bin/lvim
             return
         else
             printf "Opening vim...\n"
@@ -152,7 +152,7 @@ function vim () {
             if [ ! -w "$(dirname $@)" ]
             then
                 printf "Opening vim with sudo...\n"
-                sudo $HOME/.local/bin/lvim "$@"
+                sudo -E $HOME/.local/bin/lvim "$@"
                 if [ ! -e "$@" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
@@ -183,7 +183,7 @@ function vim () {
     if [ ! -w "$@" ]
 	then
         printf "Opening vim with sudo...\n"
-		sudo $HOME/.local/bin/lvim "$@"
+		sudo -E $HOME/.local/bin/lvim "$@"
         return
 	elif [[ -e "$@" ]]; then
         printf "Opening vim...\n"
@@ -329,7 +329,7 @@ function ga ()
   if [[ -n "${1+x}" ]]; then
     git add $@ -f
   else
-    git add -A -f
+    git add -A
   fi
 }
 

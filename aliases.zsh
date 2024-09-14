@@ -335,7 +335,7 @@ alias pipreqsi='installpipreqs'
 # better discord
 #alias discord='discord-screenaudio'
 # better wget
-alias wget='aria2c'
+alias wget='aria2c -x 16'
 # audios
 alias audio='pulsemixer'
 alias audiod='pipewire-pulse'
@@ -453,6 +453,7 @@ alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --p
 alias package='packagelist'
 alias pi='pacman --noconfirm -S --needed'
 alias pif='pacman --noconfirm --force -S --needed'
+alias pifd='pacman -Sd --needed --nodeps'
 #alias ps='pacman --noconfirm -S --needed'
 alias pr='pacman --noconfirm -Rns'
 alias pri='pacman --noconfirm -S'
@@ -523,6 +524,8 @@ alias msfconsole='msfd && /usr/bin/msfconsole || echo [*] msfd faild to start'
 alias processfind='ps -aux | grep -v grep | grep'
 alias processf='processfind'
 alias pf='processfind'
+
+alias code='cursor'
 
 
 # help
