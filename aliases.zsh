@@ -38,7 +38,7 @@ alias installed="grep -i installed /var/log/pacman.log"
 #alias cat="bat --color always --plain"
 alias grep='grep --color=auto'
 alias mv='mv -v'
-alias cp='cp -vr'
+alias cp='cp --reflink=always -vr'
 alias rm='trash -v'
 alias commit="git add . && git commit -m"
 alias push="git push"
@@ -541,3 +541,7 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 getfs() { scp -P 2002 ssh.littleblack111.com:$@ .; }
 putfile() { scp -P 2002 $@ ssh.littleblack111.com:~ }
 putfs() { scp -P 2002 $@ ssh.littleblack111.com:~/server/public-fs }
+
+# colors
+# alias ping='prettyping'
+alias make='colormake'
