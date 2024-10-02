@@ -374,7 +374,7 @@ alias visudo='sudo visudo'
 alias snap='sudo snap'
 alias fucking='sudo'
 alias howdy='sudo howdy'
-alias gparted='sudo gparted'
+alias gparted='sudo -E gparted'
 alias gpart='sudo gpart'
 alias gdisk='sudo gdisk'
 alias cgdisk='sudo cgdisk'
@@ -544,3 +544,9 @@ putfs() { scp -P 2002 $@ ssh.littleblack111.com:~/server/public-fs }
 # colors
 # alias ping='prettyping'
 alias make='colormake'
+
+# video screen cast using v4l2
+alias camscreen='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
+alias screencam='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
+alias camerascreen='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
+alias screencamera='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
