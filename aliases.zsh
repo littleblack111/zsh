@@ -258,8 +258,8 @@ alias chatgpt='chat'
 
 # better ls
 if [ $DISPLAY ]; then
-   alias ls='lsd'
-   # alias ls="exa --color=auto --icons"
+   # alias ls='lsd'
+   alias ls="exa --color=auto --icons"
 else
    alias ls="exa --color=auto"
 fi
@@ -550,3 +550,9 @@ alias camscreen='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x
 alias screencam='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
 alias camerascreen='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
 alias screencamera='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
+alias image-clean='iopaint start --host 0.0.0.0 --enable-anime-seg --enable-realesrgan --realesrgan-device cuda --enable-restoreformer --restoreformer-device cuda --enable-gfpgan --gfpgan-device cuda --disable-nsfw-checker --inbrowser --model-dir $XDG_DATA_HOME/AI/IOPaint/modules'
+
+# hyprland overlay
+alias hyproverlay='hyprctl keyword debug:overlay true'
+alias dhyproverlay='hyprctl keyword debug:overlay false'
+alias hyproverlayd='hyprctl keyword debug:overlay false'
