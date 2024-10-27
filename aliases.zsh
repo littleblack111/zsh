@@ -368,7 +368,7 @@ alias diskana='ncdu'
 # must run as root commands
 # alias pacman='sudo pacman'
 alias sudo='sudo '
-alias root='sudo su'
+alias root='sudo -i'
 alias \*='sudo'
 alias visudo='sudo visudo'
 alias snap='sudo snap'
@@ -452,10 +452,13 @@ alias packagelist="paru --color always -Sl | fzf --multi --ansi --preview 'yay -
 alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --preview 'yay -Si {1}' | xargs -ro paru -S --skipreview --needed"
 alias package='packagelist'
 alias pi='pacman --noconfirm -S --needed'
+alias pidep='pacman --noconfirm -S --asdeps --needed'
+alias pindep='pacman --noconfirm -Sd --nodeps'
 alias pif='pacman --noconfirm --force -S --needed'
 alias pifd='pacman -Sd --needed --nodeps'
 #alias ps='pacman --noconfirm -S --needed'
 alias pr='pacman --noconfirm -Rns'
+alias prndep='pacman --noconfirm -Rnsd --nodeps'
 alias pri='pacman --noconfirm -S'
 alias pc='pacman -Scc'
 alias clean='pacman -Scc'
@@ -556,3 +559,13 @@ alias image-clean='iopaint start --host 0.0.0.0 --enable-anime-seg --enable-real
 alias hyproverlay='hyprctl keyword debug:overlay true'
 alias dhyproverlay='hyprctl keyword debug:overlay false'
 alias hyproverlayd='hyprctl keyword debug:overlay false'
+
+alias cavabg='alacritty --class winwrap -e cava'
+alias bgcava='alacritty --class winwrap -e cava'
+
+# cpu freq
+alias cpuperf='sudo cpupower frequency-set -g performance'
+alias cpups='sudo cpupower frequency-set -g powersave'
+
+# better time benchmark
+alias time='hyperfine --warmup 3 -N'
