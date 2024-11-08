@@ -249,21 +249,21 @@ function vim () {
 #	fi
 #}
 
-#function less () {
-#	if [ ! -e "$1" ]
-#	then
-#		DIR=$(dirname "$1")
-#		OWNER=$(stat -c '%U' "$DIR")
-#	else
-#		OWNER=$(stat -c '%U' "$1")
-#	fi
-#	if [[ "$OWNER" == "root" ]]
-#	then
-#		sudo /usr/bin/less "$1"
-#	else
-#		/usr/bin/less "$1"
-#	fi
-#}
+function less () {
+    if [ ! -e "$1" ]
+    then
+        DIR=$(dirname "$1")
+        OWNER=$(stat -c '%U' "$DIR")
+    else
+        OWNER=$(stat -c '%U' "$1")
+    fi
+    if [[ "$OWNER" == "root" ]]
+    then
+        sudo bat "$1"
+    else
+        bat "$1"
+    fi
+}
 
 # move applications
 function move_to_desktop {
