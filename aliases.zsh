@@ -227,7 +227,7 @@ gcl() { git clone --recurse-submodules $@ || gh repo clone $@ -- --recurse-submo
 alias gc='git commit --verbose -S -m'
 alias gca='git commit --verbose -S -am'
 # alias gp='git push origin main'
-alias gp='git remote | xargs -L1 git push --all'
+# alias gp='git remote | xargs -L1 git push --all' # moved to funcs
 alias gitp='git remote | xargs -L1 git pull'
 alias gs='git status'
 alias gitrm='git rm --cached -rf'
@@ -456,6 +456,7 @@ alias pidep='pacman --noconfirm -S --asdeps --needed'
 alias pindep='pacman --noconfirm -Sd --nodeps'
 alias pif='pacman --noconfirm --force -S --needed'
 alias pifd='pacman -Sd --needed --nodeps'
+alias pio='pacman --noconfirm -S --overwrite "*" --needed'
 #alias ps='pacman --noconfirm -S --needed'
 alias pr='pacman --noconfirm -Rns'
 alias prndep='pacman --noconfirm -Rnsd --nodeps'
@@ -528,7 +529,7 @@ alias processfind='ps -aux | grep -v grep | grep'
 alias processf='processfind'
 alias pf='processfind'
 
-alias code='cursor'
+# alias code='cursor'
 
 
 # help
@@ -569,3 +570,5 @@ alias cpups='sudo cpupower frequency-set -g powersave'
 
 # better time benchmark
 alias time='hyperfine --warmup 3 -N'
+
+function \?\?() { file=$(mktemp) && gh copilot suggest -t shell $@ --shell-out $file && eval $(cat $file) && rm $file; }
