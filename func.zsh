@@ -249,21 +249,22 @@ function vim () {
 #	fi
 #}
 
-function less () {
-    if [ ! -e "$1" ]
-    then
-        DIR=$(dirname "$1")
-        OWNER=$(stat -c '%U' "$DIR")
-    else
-        OWNER=$(stat -c '%U' "$1")
-    fi
-    if [[ "$OWNER" == "root" ]]
-    then
-        sudo bat "$1"
-    else
-        bat "$1"
-    fi
-}
+# breaks pipe (i.e. cat file | less)
+# function less () {
+#     if [ ! -e "$1" ]
+#     then
+#         DIR=$(dirname "$1")
+#         OWNER=$(stat -c '%U' "$DIR")
+#     else
+#         OWNER=$(stat -c '%U' "$1")
+#     fi
+#     if [[ "$OWNER" == "root" ]]
+#     then
+#         sudo bat "$1"
+#     else
+#         bat "$1"
+#     fi
+# }
 
 # move applications
 function move_to_desktop {
@@ -331,6 +332,15 @@ function ga ()
   else
     git add -A
   fi
+}
+
+function gp () {
+    if [[ -n "${1+x}" ]]; then
+        git push -u origin $@
+    else
+        git remote | xargs -L1 git push
+    fi
+
 }
 
 function linuxcmd ()
