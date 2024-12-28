@@ -165,9 +165,9 @@ rehash_precmd() {
 #source /usr/share/nvm/init-nvm.sh
 
 # nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh &!; fi # added by Nix installer
+# if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh &!; fi # added by Nix installer
 eval "$(zoxide init zsh --cmd cd)"
 
 # eval "$(gh copilot alias zsh)"
-eval "$(coolify completion zsh)"
+# eval "$(coolify completion zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"

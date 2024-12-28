@@ -83,7 +83,7 @@ EOF
 #EOF
 
 #eval "$(zoxide init zsh)"
-eval "$(fnm env --use-on-cd)" 
+# eval "$(fnm env --use-on-cd)" 
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e

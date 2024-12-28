@@ -435,6 +435,6 @@ function killZombie() {
 }
 
 function createrepo() {
-    gh repo create $1 --add-readme --license gpl-3.0 ${@:2}
-    tea repo create --name $1 --init --readme Default --license gpl3 --branch main ${@:2}
+    gh repo create $1 --add-readme --license gpl-3.0 ${@:2} --public
+    # tea repo create --name $1 --init --readme Default --license gpl3 --branch main ${@:2}
 }
