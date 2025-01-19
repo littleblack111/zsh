@@ -98,6 +98,7 @@ setopt appendhistory
 setopt histignorealldups
 # so !! doesn't open a new line
 unsetopt HIST_VERIFY
+setopt NO_NOMATCH
 
 
 

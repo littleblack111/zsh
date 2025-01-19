@@ -35,8 +35,9 @@ alias installed="grep -i installed /var/log/pacman.log"
 
 # git & gh
 #alias tree='tree -a -I .git'
-#alias cat="bat --color always --plain"
-alias grep='grep --color=auto'
+alias cat="bat --plain --pager=never"
+# alias grep='grep --color=auto'
+alias grep='rg'
 alias mv='mv -v'
 alias cp='cp --reflink=always -vr'
 alias rm='trash -v'
@@ -253,7 +254,7 @@ alias chatgpt='chat'
 #alias lla="ls -la"
 #alias lt="ls --tree"
 #alias tree='tree -a -I .git'
-#alias cat="bat --color always --plain"
+# alias cat="bat --color always --plain"
 
 
 # better ls
@@ -344,7 +345,7 @@ alias config-bspwm='vim ~/.config/bspwm/bspwmrc'
 alias config-keybind='vim ~/.config/bspwm/sxhkdrc'
 alias config-polybar='vim ~/.config/bspwm/themes/default/polybar/config.ini'
 # better less/cat
-# alias less='bat' # moved into utility for auto sudo # nah, the one wont work with pipe
+alias less='bat --color always --plain' # moved into utility for auto sudo # nah, the one wont work with pipe
 # alias cat='bat --pager=never' # moved into utility for auto sudo # nah, wont work with pipe
 # better diff
 #alias diff='bat -d'
@@ -460,7 +461,7 @@ alias pindep='pacman --noconfirm -Sd --nodeps'
 alias pif='pacman --noconfirm --force -S --needed'
 alias pifd='pacman -Sd --needed --nodeps'
 alias pio='pacman --noconfirm -S --overwrite "*" --needed'
-alias piro='pacman --noconfirm -S --overwrite "*"'
+alias prio='pacman --noconfirm -S --overwrite "*"'
 #alias ps='pacman --noconfirm -S --needed'
 alias pr='pacman --noconfirm -Rns'
 alias prndep='pacman --noconfirm -Rnsd --nodeps'
@@ -576,3 +577,7 @@ alias cpups='sudo cpupower frequency-set -g powersave'
 alias time='hyperfine --warmup 3 -N'
 
 function \?\?() { file=$(mktemp) && gh copilot suggest -t shell $@ --shell-out $file && eval $(cat $file) && rm $file; }
+
+alias icat='kitten icat'
+
+alias mkcd='nocorrect mkcd'
