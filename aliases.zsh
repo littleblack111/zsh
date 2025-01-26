@@ -220,6 +220,7 @@ alias gr='git remote'
 # alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 # alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
 # alias gcl='git clone --recurse-submodules'
+alias gl='git log --decorate --graph'
 gcl() { git clone --recurse-submodules $@ || gh repo clone $@ -- --recurse-submodules }
 # alias gi='git init'
 # alias gl='git log'
@@ -345,7 +346,7 @@ alias config-bspwm='vim ~/.config/bspwm/bspwmrc'
 alias config-keybind='vim ~/.config/bspwm/sxhkdrc'
 alias config-polybar='vim ~/.config/bspwm/themes/default/polybar/config.ini'
 # better less/cat
-alias less='bat --color always --plain' # moved into utility for auto sudo # nah, the one wont work with pipe
+# alias less='bat --pager=always --color always --plain' # moved into utility for auto sudo # nah, the one wont work with pipe
 # alias cat='bat --pager=never' # moved into utility for auto sudo # nah, wont work with pipe
 # better diff
 #alias diff='bat -d'
@@ -485,7 +486,7 @@ alias py='python3'
 alias df='df -h'
 alias du='du -h'
 #alias free='free -h'
-alias grep='grep --color=always'
+# alias grep='grep --color=always'
 alias frep='grep -ir'
 
 # vim:ft=zsh
