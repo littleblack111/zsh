@@ -99,7 +99,7 @@ setopt histignorealldups
 # so !! doesn't open a new line
 unsetopt HIST_VERIFY
 setopt NO_NOMATCH
-
+setopt dotglob
 
 
 # vim:filetype=zsh:nowrap
