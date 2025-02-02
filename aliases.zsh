@@ -22,16 +22,6 @@ alias ..="cd .."
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 alias mkdir="mkdir -p"
 alias fm='ranger'
-alias pacin="pacman -Slq | fzf -m --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
-alias paruin="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
-alias pacrem="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
-#alias pac="pacman -Q | fzf"
-alias parucom="paru -Gc"
-alias parupd="paru -Qua"
-alias pacupd="pacman -Qu"
-alias parucheck="paru -Gp"
-alias cleanpac='sudo pacman -Rns $(pacman -Qtdq); paru -c'
-alias installed="grep -i installed /var/log/pacman.log"
 
 # git & gh
 #alias tree='tree -a -I .git'
@@ -261,9 +251,9 @@ alias chatgpt='chat'
 # better ls
 if [ $DISPLAY ]; then
    # alias ls='lsd'
-   alias ls="exa --color=auto --icons"
+   alias ls="eza --color=auto --icons=always"
 else
-   alias ls="exa --color=auto"
+   alias ls="eza --color=auto"
 fi
 alias l='ls -l'
 alias ll='ls -l'
@@ -282,9 +272,6 @@ alias rel='exec /bin/zsh'
 alias reload='exec /bin/zsh'
 alias news='exec /bin/zsh'
 alias refresh='exec /bin/zsh'
-alias fns='/usr/bin/clear; exec /bin/zsh'
-alias fnews='/usr/bin/clear; exec /bin/zsh'
-alias clear='/usr/bin/clear; neofetch | lolcat'
 alias cls='clear'
 # better vims
 alias record='asciinema rec'
@@ -368,9 +355,8 @@ alias map='mapscii'
 # disk analyser
 alias diskana='ncdu'
 # must run as root commands
-# alias pacman='sudo pacman'
-alias sudo='sudo '
-alias root='sudo -i'
+alias sudo='sudo       '
+alias root='/usr/bin/sudo -i'
 alias \*='sudo'
 alias visudo='sudo visudo'
 alias snap='sudo snap'
@@ -402,9 +388,8 @@ alias swapoff='sudo swapoff'
 alias grpck='sudo grpck'
 alias pwck='sudo pwck'
 #alias npm='sudo npm'
-alias pacman-key='sudo pacman-key'
-alias add-pacman-repository='sudo add-pacman-repository'
-alias downgrade='sudo downgrade'
+alias npm='bun'
+alias npx='bunx'
 alias emerge='sudo emerge'
 alias powerpill='sudo powerpill'
 alias timeshift='sudo timeshift'
@@ -433,46 +418,8 @@ alias bcd='fzf'
 alias keybind='xev'
 # bettercap
 alias bettercap='sudo bettercap'
-# better pacman
-#alias pacman='paru'
-alias pacman='yay '
-#alias pacman='pamac'
-#alias pacman='sudo pacman'
-#alias apt='pamac' # idk there is a package called apt lmao
-# full system upgrade/update
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-# alias update='sudo npm update -g & nix-env -u & brew upgrade & flatpak update -y & tldr -u & yay -Syu --noconfirm --disable-download-timeout' # pipx upgrade-all
 alias update='topgrade -y --no-retry'
 alias upgrade='update'
-# more pacman alis
-alias packagelistignoreall='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /已安装/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
-alias packagelist="paru --color always -Sl | fzf --multi --ansi --preview 'yay -Si {2}' | awk '{print \$2}' | xargs -ro yay -S --noconfirm"
-# alias packagelist='paru --color always -Sl | sed -e "s: :/:; /unknown-version/d" | fzf --multi --ansi --preview "yay -Si {1}" | cut -d" " -f1 | xargs -ro yay -S'
-alias packagef="/usr/bin/cat /tmp/yaySl | cut -d' ' -f2 | fzf --multi --ansi --preview 'yay -Si {1}' | xargs -ro paru -S --skipreview --needed"
-alias package='packagelist'
-alias pi='pacman --noconfirm -S --needed'
-alias pic='pacman --noconfirm -S --needed --ask 4'
-alias pico='pacman --noconfirm -S --overwrite "*" --needed --ask 4'
-alias picdep='pacman --noconfirm -Sd --needed --ask 4 --nodeps'
-alias pidep='pacman --noconfirm -S --asdeps --needed'
-alias pindep='pacman --noconfirm -Sd --nodeps'
-alias pif='pacman --noconfirm --force -S --needed'
-alias pifd='pacman -Sd --needed --nodeps'
-alias pio='pacman --noconfirm -S --overwrite "*" --needed'
-alias prio='pacman --noconfirm -S --overwrite "*"'
-#alias ps='pacman --noconfirm -S --needed'
-alias pr='pacman --noconfirm -Rns'
-alias prndep='pacman --noconfirm -Rnsd --nodeps'
-alias pri='pacman --noconfirm -S'
-alias pc='pacman -Scc'
-alias clean='pacman -Scc'
-alias pf='pacman --noconfirm '
-alias p='pacman'
-alias autoremove='pacman -Rcns $(pacman -Qdtq)'
-alias pd='downgrade'
 # alias for nix(package manager)
 #alias nix-install='nix-env -iA nixpkgs.'
 alias nix-remove='nix-env -e'
@@ -497,10 +444,6 @@ alias frep='grep -ir'
 alias j='nocorrect j'
 alias killall='nocorrect killall'
 alias mysql='mysql'
-#alias pi='nocorrect pi'
-#alias pr='nocorrect pr'
-#alias p='nocorrect p'
-#alias pacman='nocorrect pacman'
 
 # alias sys='nu -c sys'
 alias usys='systemctl --user'
@@ -553,7 +496,7 @@ putfs() { scp -P 2002 $@ ssh.littleblack111.com:~/server/public-fs }
 
 # colors
 # alias ping='prettyping'
-alias make='colormake'
+# alias make='colormake'
 
 # video screen cast using v4l2
 alias camscreen='wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video9 -x yuv420p'
@@ -582,3 +525,5 @@ function \?\?() { file=$(mktemp) && gh copilot suggest -t shell $@ --shell-out $
 alias icat='kitten icat'
 
 alias mkcd='nocorrect mkcd'
+
+source $HOME/.config/zsh/gentoo.alias.zsh
