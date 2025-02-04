@@ -120,7 +120,7 @@ autoload -U compinit && compinit -u
 # homebrew
 # [ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # eval "$(/usr/local/linuxbrew/bin/brew shellenv)"
-eval "$(/opt/linuxbrew/bin/brew shellenv)"
+# eval "$(/opt/linuxbrew/bin/brew shellenv)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -171,3 +171,4 @@ eval "$(zoxide init zsh --cmd cd)"
 # eval "$(gh copilot alias zsh)"
 # eval "$(coolify completion zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
+# source /usr/share/atuin/shell-init/zsh --disable-up-arrow
