@@ -240,6 +240,7 @@ gcl() { git clone --recurse-submodules $@ || gh repo clone $@ -- --recurse-submo
 #alias ga='git add'
 # alias gc='git commit -am'
 alias gc='git commit --verbose -S -m'
+alias gcnm='git commit --verbose --allow-empty-message -S -m ""'
 alias gca='git commit --verbose -S -am'
 # alias gp='git push origin main'
 # alias gp='git remote | xargs -L1 git push --all' # moved to funcs
@@ -255,5 +256,3 @@ ghcl() { gh repo clone $@ -- --recurse-submodules }
 # alias ghcr='gh repo create'
 # alias ghpr='gh pr'
 # alias ghis='gh issue'
-
-

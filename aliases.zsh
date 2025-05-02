@@ -287,9 +287,9 @@ alias mt='memento-timeline'
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 
 # server stuff
-getfs() { scp -P 2002 ssh.littleblack111.com:$@ .; }
-putfile() { scp -P 2002 $@ ssh.littleblack111.com:~ }
-putfs() { scp -P 2002 $@ ssh.littleblack111.com:~/server/public-fs }
+getfs() { scp -P 2002 -R ssh.littleblack111.com:$@ .; }
+putfile() { scp -P 2002 -R $@ ssh.littleblack111.com:~ }
+putfs() { scp -P 2002 -R $@ ssh.littleblack111.com:~/server/public-fs }
 
 # colors
 # alias ping='prettyping'
@@ -325,3 +325,4 @@ alias mkcd='nocorrect mkcd'
 
 source $HOME/.config/zsh/git.alias.zsh
 source $HOME/.config/zsh/gentoo.alias.zsh
+source $HOME/.config/zsh/kitten.alias.zsh
