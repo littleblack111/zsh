@@ -33,8 +33,8 @@ export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
-## Comment this to use normal manpager
-# export MANPAGER='lvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+export MANPAGER='lvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+# export MANPAGER="lvim +Man"
 
 # if [ $(echo $MANPAGER | awk '{print $1}') = nvim ]; then
 #   export LESS="--RAW-CONTROL-CHARS"
@@ -59,10 +59,6 @@ export XDG_VIDEOS_DIR="$HOME/Videos"
 # export LESS_TERMCAP_us=$'\E[1;32m'
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS='-R '
-
-
-# bitwarden
-export BW_SESSION="u1DcDFJAlhlceXLpmjVud3X8vq6ECrXiHN4uBohIQJHohWFHxEmWqTYVyEqV1Taoas8RMPoZuObBZglkK6Z+pw=="
 
 # FZF bases
 #export FZF_DEFAULT_OPTS="
@@ -93,3 +89,5 @@ export BW_SESSION="u1DcDFJAlhlceXLpmjVud3X8vq6ECrXiHN4uBohIQJHohWFHxEmWqTYVyEqV1
 # export LANG="zh_CN.UTF-8"
 
 # vim:ft=zsh:nowrap
+
+source $HOME/.config/zsh/env.local.zsh
