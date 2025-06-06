@@ -128,18 +128,18 @@ function vim () {
     #     printf "File name argument required.\n"
     #     return 1
     # fi
-    if [ ! "$@" ]; then
+    if [ ! "$1" ]; then
         if [ ! -w "$(pwd)" ]; then
-            printf "Opening vim with sudo...\n"
-            sudo -E $HOME/.local/bin/lvim
+            printf "Opening $EDITOR with sudo...\n"
+            sudo $EDITOR
             return
         else
-            printf "Opening vim...\n"
-            $HOME/.local/bin/lvim
+            printf "Opening $EDITOR...\n"
+            $EDITOR
             return
         fi
     fi
-	if [ ! -e "$@" ]
+	if [ ! -e "$1" ]
 	then
         printf "$@ doesn't exist\ntouch File '$@'?(y/N)"
         if read -q "choice? "
@@ -151,9 +151,9 @@ function vim () {
             #if [[ "$OWNER" != "$USER" ]]
             if [ ! -w "$(dirname $@)" ]
             then
-                printf "Opening vim with sudo...\n"
-                sudo -E $HOME/.local/bin/lvim "$@"
-                if [ ! -e "$@" ]
+				printf "Opening with sudoedit ($EDITOR)...\n"
+                sudoedit "$@"
+                if [ ! -e "$1" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
                     printf "File \"$@\" is isn't saved, auto deleted...\n"
@@ -162,8 +162,8 @@ function vim () {
                 return
             #elif [[ -e "$@" ]]
             else
-                printf "Opening vim...\n"
-                $HOME/.local/bin/lvim "$@"
+				printf "Opening $EDITOR...\n"
+                $EDITOR "$@"
                 if [ ! -e "$@" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
@@ -180,14 +180,14 @@ function vim () {
 	#else
 		#OWNER=$(stat -c '%U' "$@")
 	fi
-    if [ ! -w "$@" ]
+    if [ ! -w "$1" ]
 	then
-        printf "Opening vim with sudo...\n"
-		sudo -E $HOME/.local/bin/lvim "$@"
+		printf "Opening $EDITOR with sudo...\n"
+		sudoedit "$@"
         return
-	elif [[ -e "$@" ]]; then
-        printf "Opening vim...\n"
-		$HOME/.local/bin/lvim "$@"
+	elif [[ -e "$1" ]]; then
+		printf "Opening $EDITOR...\n"
+		$EDITOR "$@"
         return
 	fi
 #    if [ -e "$@" ]
@@ -380,7 +380,7 @@ function path ()
 function vimake ()
 {
   if [ -e "Makefile" ]; then  
-    lvim Makefile
+    nvim Makefile
   else
     printf "No Makefile"
   fi
