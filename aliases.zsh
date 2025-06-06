@@ -25,7 +25,7 @@ alias fm='ranger'
 
 alias cat="bat --plain --pager=never"
 # alias grep='grep --color=auto'
-alias grep='rg'
+alias grep='rg -F'
 alias mv='mv -v'
 alias cp='cp --reflink=always -vr'
 alias rm='trash -v'
@@ -324,5 +324,5 @@ alias icat='kitten icat'
 alias mkcd='nocorrect mkcd'
 
 source $HOME/.config/zsh/git.alias.zsh
-source $HOME/.config/zsh/gentoo.alias.zsh
+source $HOME/.config/zsh/pacman.alias.zsh
 source $HOME/.config/zsh/kitten.alias.zsh

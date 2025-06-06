@@ -9,11 +9,12 @@ export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/scripts/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/snap/bin"
 export GPG_TTY="${TTY:-$(tty)}"
-export SUDO_PROMPT="passwd: "
-export TERMINAL="ghostty"
-export BROWSER="zen-bin"
-export VISUAL="lvim"
+export SUDO_PROMPT="pass: "
+export TERMINAL="kitty"
+export BROWSER="zen-browser"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export PATH=$PATH:/home/system/.spicetify
 
@@ -33,7 +34,7 @@ export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
-export MANPAGER='lvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
 # export MANPAGER="lvim +Man"
 
 # if [ $(echo $MANPAGER | awk '{print $1}') = nvim ]; then
