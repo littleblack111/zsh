@@ -3,6 +3,7 @@
 ##
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
+export QML_IMPORT_PATH="/usr/lib/qt6/qml"
 export WINEPREFIX=/opt/windows.wine
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/scripts:$PATH"
@@ -10,8 +11,9 @@ export PATH="$HOME/scripts/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/snap/bin"
-export GPG_TTY="${TTY:-$(tty)}"
-export SUDO_PROMPT="pass: "
+export PATH="$PATH:$HOME/.cache/.bun/bin"
+export PATH="$PATH:$HOME/go/bin"
+export GPG_TTY="${TTY:-$(tty)}" export SUDO_PROMPT="pass: "
 export TERMINAL="kitty"
 export BROWSER="zen-browser"
 export VISUAL="nvim"
@@ -35,6 +37,7 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
 export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+export DIFFPROG='nvim -d'
 # export MANPAGER="lvim +Man"
 
 # if [ $(echo $MANPAGER | awk '{print $1}') = nvim ]; then

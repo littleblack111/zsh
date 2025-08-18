@@ -131,11 +131,11 @@ function vim () {
     if [ ! "$@" ]; then
         if [ ! -w "$(pwd)" ]; then
             printf "Opening vim with sudo...\n"
-            sudo -E $HOME/.local/bin/lvim
+            sudo -E $EDITOR
             return
         else
             printf "Opening vim...\n"
-            $HOME/.local/bin/lvim
+            $EDITOR
             return
         fi
     fi
@@ -152,7 +152,7 @@ function vim () {
             if [ ! -w "$(dirname $@)" ]
             then
                 printf "Opening vim with sudo...\n"
-                sudo -E $HOME/.local/bin/lvim "$@"
+                sudo -E $EDITOR "$@"
                 if [ ! -e "$@" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
@@ -163,7 +163,7 @@ function vim () {
             #elif [[ -e "$@" ]]
             else
                 printf "Opening vim...\n"
-                $HOME/.local/bin/lvim "$@"
+                $EDITOR "$@"
                 if [ ! -e "$@" ]
                 then
                     #printf "File \"$@\" is Empty, auto deleted...\n"
@@ -183,11 +183,11 @@ function vim () {
     if [ ! -w "$@" ]
 	then
         printf "Opening vim with sudo...\n"
-		sudo -E $HOME/.local/bin/lvim "$@"
+		sudo -E $EDITOR "$@"
         return
 	elif [[ -e "$@" ]]; then
         printf "Opening vim...\n"
-		$HOME/.local/bin/lvim "$@"
+		$EDITOR "$@"
         return
 	fi
 #    if [ -e "$@" ]
@@ -334,14 +334,14 @@ function ga ()
   fi
 }
 
-function gp () {
-    if [[ -n "${1+x}" ]]; then
-        git push -u origin $@
-    else
-        git remote | xargs -L1 git push
-    fi
-
-}
+# function gp () {
+#     if [[ -n "${1+x}" ]]; then
+#         git push -u origin $@
+#     else
+#         git remote | xargs -L1 git push
+#     fi
+#
+# }
 
 function linuxcmd ()
 {
@@ -380,7 +380,7 @@ function path ()
 function vimake ()
 {
   if [ -e "Makefile" ]; then  
-    lvim Makefile
+    $EDITOR Makefile
   else
     printf "No Makefile"
   fi
