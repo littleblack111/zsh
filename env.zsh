@@ -16,7 +16,7 @@ export PATH="$PATH:$HOME/go/bin"
 export GPG_TTY="${TTY:-$(tty)}" export SUDO_PROMPT="pass: "
 export TERMINAL="kitty"
 export BROWSER="zen-browser"
-export VISUAL="nvim"
+export VISUAL="hx"
 export EDITOR="$VISUAL"
 export PATH=$PATH:/home/system/.spicetify
 
@@ -92,6 +92,10 @@ export LESS='-R '
 
 # export LANG="zh_CN.UTF-8"
 
-# vim:ft=zsh:nowrap
+# Begin added by argcomplete
+fpath=( /home/system/.local/lib/python3.13/site-packages/argcomplete/bash_completion.d "${fpath[@]}" )
+# End added by argcomplete
 
 source $HOME/.config/zsh/env.local.zsh
+
+# vim:ft=zsh:nowrap

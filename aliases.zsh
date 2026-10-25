@@ -25,7 +25,7 @@ alias fm='ranger'
 
 alias cat="bat --plain --pager=never"
 # alias grep='grep --color=auto'
-alias grep='rg --no-heading --with-filename -F'
+alias grep='rg --no-heading --with-filename --smart-case -F'
 alias mv='mv -v'
 alias cp='cp --reflink=auto -vr'
 alias rm='trash -v'
@@ -48,7 +48,7 @@ alias chatgpt='chat'
 # better ls
 if [ $DISPLAY ]; then
    # alias ls='lsd'
-   alias ls="eza --color=auto --icons=always"
+   alias ls="eza --color=auto --icons=always --hyperlink"
 else
    alias ls="eza --color=auto"
 fi

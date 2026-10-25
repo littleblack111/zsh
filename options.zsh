@@ -100,7 +100,7 @@ setopt histignorealldups
 unsetopt HIST_VERIFY
 setopt NO_NOMATCH
 setopt dotglob
-
+setopt extendedglob
 
 # vim:filetype=zsh:nowrap
 # aaa

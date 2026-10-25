@@ -438,3 +438,7 @@ function createrepo() {
     gh repo create $1 --add-readme --license gpl-3.0 ${@:2} --public
     # tea repo create --name $1 --init --readme Default --license gpl3 --branch main ${@:2}
 }
+
+function tempsend() {
+	bw send $@ 2>/dev/null | jq -r '.accessUrl'
+}
