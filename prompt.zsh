@@ -9,7 +9,7 @@ fi
 
 if [[ $DISPLAY ]]; then
 # powerlevel
-    source ~/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
+    # source ~/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
     # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
     source ~/.p10k.zsh
 else

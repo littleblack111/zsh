@@ -19,13 +19,13 @@ alias zip='ouch c'
 alias compress='zip'
 alias sr='source ~/.config/zsh/env.zsh'
 alias ..="cd .."
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -p"
 alias fm='ranger'
 
-alias cat="bat --plain --pager=never"
+alias cat='bat --pager=never'
 # alias grep='grep --color=auto'
-alias grep='rg --no-heading --with-filename --smart-case -F'
+alias grep='rg --no-heading --with-filename --smart-case --hyperlink-format=kitty -F --hidden'
 alias mv='mv -v'
 alias cp='cp --reflink=auto -vr'
 alias rm='trash -v'
@@ -48,7 +48,7 @@ alias chatgpt='chat'
 # better ls
 if [ $DISPLAY ]; then
    # alias ls='lsd'
-   alias ls="eza --color=auto --icons=always --hyperlink"
+   alias ls="eza --color=auto --icons=always --hyperlink=auto"
 else
    alias ls="eza --color=auto"
 fi
@@ -98,7 +98,6 @@ alias paste='wl-paste'
 alias cloudflarepf='cloudflared tunnel --url localhost:'
 alias portforward='cloudflared tunnel --url localhost:'
 alias ngrokpf='ngrok http '
-alias webserver='echo clearing background jobs; fg &> /dev/null; echo starting python webserver and making it go to background && sudo python3 -m http.server 80 & echo forwarding the python server with cloudflare and it might not sussess; cloudflared tunnel --url http://127.0.0.1:80; pulling out python server from background for quit; fg; fg&> /dev/null; fg&> /dev/null'
 alias localwebserver='sudo python3 -m http.server 80'
 # vpn(hide.me)
 alias open-vpn='systemctl start hide.me@free-us.hideservers.net'
@@ -139,6 +138,7 @@ alias tarxz='tar -xvJf '
 alias targz='tar -xvzf '
 # faster(vim)
 alias v='vim'
+alias ssh='kitty +kitten ssh'
 ## auto fuck
 # better finds
 #alias find='sudo find / | grep '
@@ -287,9 +287,9 @@ alias mt='memento-timeline'
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 
 # server stuff
-getfs() { scp -P 2002 -R ssh.littleblack111.com:$@ .; }
-putfile() { scp -P 2002 -R $@ ssh.littleblack111.com:~ }
-putfs() { scp -P 2002 -R $@ ssh.littleblack111.com:~/server/public-fs }
+getfs() { scp -P 2002 -r ssh.littleblack111.com:$@ .; }
+putfile() { scp -P 2002 -r $@ ssh.littleblack111.com:~; }
+putfs() { scp -P 2002 -r $@ ssh.littleblack111.com:~/server/public-fs; }
 
 # colors
 # alias ping='prettyping'
@@ -315,13 +315,17 @@ alias cpuperf='sudo cpupower frequency-set -g performance'
 alias cpups='sudo cpupower frequency-set -g powersave'
 
 # better time benchmark
-alias time='hyperfine --warmup 3 -N'
+# alias time='hyperfine --warmup 3 -N'
 
 function \?\?() { file=$(mktemp) && gh copilot suggest -t shell $@ --shell-out $file && eval $(cat $file) && rm $file; }
 
-alias icat='kitten icat'
+alias icat='kitten icat --scale-up'
 
 alias mkcd='nocorrect mkcd'
+alias md='mkdir'
+alias cloc='tokei'
+alias strace='lurk'
+alias fd='fd -HI'
 
 source $HOME/.config/zsh/git.alias.zsh
 source $HOME/.config/zsh/pacman.alias.zsh

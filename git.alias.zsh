@@ -111,7 +111,17 @@ alias git-rm="git ls-files --deleted -z | xargs -0 git rm"
 # alias gcsm='git commit -s -m'
 # alias gcss='git commit -S -s'
 # alias gcssm='git commit -S -s -m'
-alias gd='git diff'
+gd() {
+	if (( $# == 1 )); then
+		if [[ -e $1 ]]; then
+			git diff $1
+		else
+			git diff $1~1 $1
+		fi
+	else
+		git diff $@
+	fi
+}
 # alias gdca='git diff --cached'
 # alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
 # alias gdcw='git diff --cached --word-diff'
@@ -259,3 +269,8 @@ ghcl() { gh repo clone $@ -- --recurse-submodules }
 # alias ghpr='gh pr'
 # alias ghis='gh issue'
 alias bisectundo="git bisect log | head -n -2 > /tmp/fixed_bisect.log ; git bisect replay /tmp/fixed_bisect.log"
+
+gf() {
+	git commit --fixup=$1
+	GIT_EDITOR=true git rebase -i --autosquash $1^^
+}

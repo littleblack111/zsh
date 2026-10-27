@@ -1,0 +1,29 @@
+# zimfw module configuration
+# https://github.com/zimfw/zimfw
+
+# Prompt
+zmodule romkatv/powerlevel10k --use degit
+
+# Completions
+zmodule zsh-users/zsh-completions --fpath src
+
+# Core modules
+zmodule environment
+zmodule input
+zmodule termtitle
+# zmodule utility
+
+# OMZ compat: sudo (Esc-Esc), dirhistory (Alt-arrows), web-search, copybuffer (Ctrl-O)
+zmodule ohmyzsh/ohmyzsh --root plugins/sudo
+zmodule ohmyzsh/ohmyzsh --root plugins/dirhistory
+zmodule ohmyzsh/ohmyzsh --root plugins/web-search
+# zmodule ohmyzsh/ohmyzsh --root plugins/copybuffer
+
+# Must be sourced before zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-history-substring-search
+
+# Must be last
+zmodule zsh-users/zsh-syntax-highlighting
+
+zmodule completion

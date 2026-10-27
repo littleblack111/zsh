@@ -9,7 +9,7 @@ zmodload zsh/complist
 
 autoload _vi_search_fix
 autoload -Uz colors
-autoload -U compinit
+# autoload -U compinit
 colors
 
 zle -N _vi_search_fix
@@ -86,7 +86,10 @@ EOF
 # eval "$(fnm env --use-on-cd)" 
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
+# bindkey -v
+
+WORDCHARS="${WORDCHARS/\//}"
+WORDCHARS="${WORDCHARS//./}"
 
 setopt extendedglob
 setopt nocaseglob

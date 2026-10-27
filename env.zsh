@@ -13,6 +13,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/snap/bin"
 export PATH="$PATH:$HOME/.cache/.bun/bin"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/share/solana/install/active_release/bin"
 export GPG_TTY="${TTY:-$(tty)}" export SUDO_PROMPT="pass: "
 export TERMINAL="kitty"
 export BROWSER="zen-browser"
@@ -36,7 +37,9 @@ export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
-export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+# export MANPAGER='nvim +Man! +"set nocul" +"set noshowcmd" +"set noruler" +"set noshowmode" +"set laststatus=0" +"set showtabline=0" +"set nonumber"'
+export MANPAGER=delta
+export PAGER=delta
 export DIFFPROG='nvim -d'
 # export MANPAGER="lvim +Man"
 

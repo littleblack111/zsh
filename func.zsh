@@ -117,7 +117,7 @@ function git-svn(){
           svn export "$repo/trunk/$2"
   else
           echo "Use: git-svn <repository> <subdirectory>"
-  fi  
+  fi
 }
 
 # vim with auto sudo
@@ -379,7 +379,7 @@ function path ()
 
 function vimake ()
 {
-  if [ -e "Makefile" ]; then  
+  if [ -e "Makefile" ]; then
     $EDITOR Makefile
   else
     printf "No Makefile"
@@ -388,7 +388,7 @@ function vimake ()
 
 function vimpkg ()
 {
-  if [ -e "PKGBUILD" ]; then  
+  if [ -e "PKGBUILD" ]; then
     nvim PKGBUILD
   else
     printf "No PKGBUILD"
@@ -441,4 +441,20 @@ function createrepo() {
 
 function tempsend() {
 	bw send $@ 2>/dev/null | jq -r '.accessUrl'
+}
+
+function mkcd() {
+	mkdir -p $1 && cd $1
+}
+
+function webserver() {
+	echo "clearing background jobs"
+	fg &>/dev/null
+	echo "starting python webserver in background"
+	sudo python3 -m http.server 80 &
+	echo "forwarding with cloudflare"
+	cloudflared tunnel --url http://127.0.0.1:80
+	fg
+	fg &>/dev/null
+	fg &>/dev/null
 }
